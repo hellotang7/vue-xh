@@ -10,6 +10,7 @@ import xhFenxi from "@/page/xh-fenxi.vue";
 import xhTaizhang from "@/page/xh-taizhang.vue";
 import xhPandian from "@/page/xh-pandian.vue";
 import xhXitong from "@/page/xh-xitong.vue";
+import xhMain from "@/page/xh-main.vue";
 
 // 调用 Vue.use(VueRouter)
 Vue.use(VueRouter)
@@ -18,7 +19,7 @@ Vue.use(VueRouter)
 const routes = [
     //第一级
     {
-        path: '/', component: xhHome, meta: {title: '首页'},
+        path: '/', component:xhMain ,meta: {title: '首页'},redirect:'/home', //当路径为/时重定向 ,
         children: [
             //第二级
             {path: '/home', component: xhHome, meta: {title: ''}},

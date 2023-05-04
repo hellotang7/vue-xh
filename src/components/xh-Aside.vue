@@ -3,9 +3,6 @@
 
     <el-menu default-active="1-4-1"
              class="el-menu-vertical-demo"
-             @open="handleOpen"
-             @close="handleClose"
-             :collapse="isCollapse"
              background-color="rgba(43,48,62)"
              text-color="#A1B9D1"
              active-text-color="#ffd04b"
@@ -54,16 +51,8 @@
 export default {
   data() {
     return {
-      isCollapse: false // 初始化 isCollapse 属性
-    }
-  },
-  methods: {
-    handleOpen() {
-      // 处理 handleOpen 逻辑
-    },
-    handleClose() {
-      // 处理 handleClose 逻辑
-    }
+      // 数据对象
+    };
   }
 }
 </script>
@@ -78,9 +67,9 @@ export default {
   border-bottom: 1px solid #3e4656;
   height: 90px;
   display: flex;
-  flex-direction: column; /* 把主轴设置成y轴 */
-  align-items: center; /* 侧轴上的元素居中对齐(注意只有一个元素) */
-  justify-content: center; /* 主轴上的元素居中对齐 (调整位置) */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   span {
     line-height: 22px;

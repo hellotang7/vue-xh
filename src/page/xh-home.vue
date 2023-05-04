@@ -1,13 +1,11 @@
 `
 <template>
-  <div class="home">
-    <div class="mbx">
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item v-for="bread in breadCrumb" :key="bread.path">{{bread.meta.title}}</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-    <div class="main">
-      <div class="left">
+
+
+
+  <div class="main">
+
+    <div class="left">
         <div class="left-gl">
           <div class="left-gl-user card">
             <div class="left">
@@ -81,7 +79,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 
 </template>
 
@@ -155,7 +153,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route)
+    // console.log(this.$route)
     // 基于准备好的dom，初始化echarts实例
     var myChart1 = echarts.init(this.$refs.echats1);
     var myChart2 = echarts.init(this.$refs.echats2);
@@ -260,11 +258,12 @@ export default {
       ]
     });
   },
-  computed: {
-    breadCrumb() {
-      return this.$route.matched
-    },
-  },
+  // computed: {
+  //   breadCrumb() {
+  //     return this.$route.matched
+  //   },
+  // },
+
 
 }
 </script>
@@ -285,20 +284,20 @@ h2 {
   padding: 10px 20px;
 }
 
-.home {
-  margin: 10px 10px;
-  flex: 1;
-  background: rgba(240, 243, 246);
+  //margin: 10px 10px;
+  //flex: 1;
+  //background: rgba(240, 243, 246);
 
-  .mbx {
-    font-size: 15px;
-    height: 20px;
-    border-bottom: 2px solid rgba(177, 193, 196);
-    padding-bottom: 4px;
-    color: #999;
-  }
+//  .mbx {
+//    font-size: 15px;
+//    height: 20px;
+//    border-bottom: 2px solid rgba(177, 193, 196);
+//    padding-bottom: 4px;
+//    color: #999;
+//  }
 
   .main {
+    //background: rgba(240, 243, 246);
     height: calc(100% - 42px);
     display: flex;
 
@@ -499,7 +498,7 @@ h2 {
     }
   }
 
-}
+
 
 </style>
 `
