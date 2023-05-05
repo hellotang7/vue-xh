@@ -11,6 +11,7 @@ import xhTaizhang from "@/page/xh-taizhang.vue";
 import xhPandian from "@/page/xh-pandian.vue";
 import xhXitong from "@/page/xh-xitong.vue";
 import xhMain from "@/page/xh-main.vue";
+import xhLogin from "@/page/xh-login.vue";
 
 // 调用 Vue.use(VueRouter)
 Vue.use(VueRouter)
@@ -22,7 +23,7 @@ const routes = [
         path: '/', component:xhMain ,meta: {title: '首页'},redirect:'/home', //当路径为/时重定向 ,
         children: [
             //第二级
-            {path: '/home', component: xhHome, meta: {title: ''}},
+            {path: '/home', component: xhHome, name: 'home', meta: {title: ''}},
             {path: '/churu', component: xhChuru, meta: {title: '出入管理'}},
             {path: '/shenling', component: xhShenling, meta: {title: '申领管理'}},
             {path: '/fenxi', component: xhFenxi, meta: {title: '分析统计'}},
@@ -31,6 +32,11 @@ const routes = [
             {path: '/xitong', component: xhXitong, meta: {title: '系统设置'}},
             {path: '/sy', component: HelloWorld, meta: {title: '试验页'}},
         ]
+    },
+    {
+        path: '/login',
+        component: xhLogin, //登录页面
+        name: 'login'
     },
 
 

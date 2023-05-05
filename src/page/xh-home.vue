@@ -1,15 +1,12 @@
 `
 <template>
-
-
-
   <div class="main">
 
     <div class="left">
         <div class="left-gl">
           <div class="left-gl-user card">
             <div class="left">
-              <img src="@/assets/logo.png" alt="" style="width: 90px">
+              <img src="@/assets/vue.png" alt="" style="width: 90px">
               <span>管理员</span>
             </div>
             <div class="right">
@@ -75,7 +72,7 @@
         </div>
         <div class="right-img card">
           <h2>库房三维效果图</h2>
-          <img src="@/assets/logo.png" alt="">
+          <img src="@/assets/vue.png" alt="">
         </div>
       </div>
     </div>

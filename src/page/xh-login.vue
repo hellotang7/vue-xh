@@ -13,7 +13,7 @@
           </div>
           <div class="right">
             <div class="center">
-              <el-form  class="login-container"  :model="loginForm" :rules="rules" ref="loginForm">
+              <el-form  class="login-container"  :model="loginForm"  ref="loginForm" :rules="rules">
                 <div class="login_title">欢迎登录</div>
                 <el-form-item  prop="userId" autocomplete="on">
                   <el-input  v-model="loginForm.userId" placeholder="请输入账号"></el-input>
@@ -25,7 +25,7 @@
                   <el-checkbox @click="open()"  v-model="checked">记住密码</el-checkbox>
                 </el-form-item>
                 <el-form-item>
-                  <el-button  @click="submitForm('loginForm')" type="primary">登录</el-button>
+                  <el-button  @click="submitForm" type="primary">登录</el-button>
                 </el-form-item>
               </el-form>
 
@@ -39,6 +39,9 @@
 </template>
 
 <script>
+import { getMenu } from '../api/index'
+import Cookie from 'js-cookie'
+
 export default {
   data(){
     return{
@@ -46,22 +49,61 @@ export default {
         userId: "",
         password: "",
       },
+      rules: {
+        userId: [
+          {required: true, trigger: 'blur', messages: '请输入用户名'}
+        ],
+        password: [
+          {required: true, trigger: 'blur', messages: '请输入密码'}
+        ],
+      },
       checked: false
     }
   },
 
   mounted() {
+
     let username = localStorage.getItem("userId");
     if (username) {
       this.loginForm.userId = localStorage.getItem("userId");
       this.loginForm.password = localStorage.getItem("password");
       this.checked = true;
     }
+    window.addEventListener("keydown",this.keyDown)
   },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+
+    keyDown(e){
+      if(e.keyCode === 13){
+        this.submitForm()
+      }
+    },
+
+
+    submitForm() {
+
+      this.$refs.loginForm.validate((valid) => {
         if (valid) {
+
+          getMenu(this.loginForm).then(({data})=>{
+            if (data.code === 20000) {
+              this.$message({
+                message: '登录成功',
+                type: 'success'
+              });
+
+              // toKen信息存入cookie用于不同页面间的通信
+              Cookie.set('toKen', data.data.toKen)
+              // 跳转到页面
+              this.$router.push({path: '/home'})
+            }else {
+              this.$message.error('密码错误');
+            }
+
+
+          })
+
+
           /* ------ 账号密码的存储 ------ */
           if (this.checked) {
             let password = this.loginForm.password;
@@ -77,8 +119,11 @@ export default {
           console.log("error submit!!");
           return false;
         }
+
       });
     },
+
+
   },
 }
 </script>

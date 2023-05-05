@@ -1,31 +1,58 @@
 <template>
   <div class="header">
     <div class="log">
-<!--      <router-link to="/home">-->
-      <img alt="" src="@/assets/logo.png">
-<!--      </router-link>-->
+      <img alt="" src="@/assets/vue.png">
     </div>
     <div class="header-left">
-<!--      <router-link to="/home">-->
-        <h1>智能库房资产管理系统</h1>
-<!--      </router-link>-->
+      <h1>智能库房资产管理系统</h1>
       <div class="user">
-        <img src="@/assets/logo.png" alt="">
+        <img src="@/assets/vue.png" alt="">
         <p>管理员(admin)</p>
       </div>
     </div>
 
     <div class="header-right">
-      <div class="f5"><i class="el-icon-refresh"></i></div>
-      <div class="quit"><i class="el-icon-close"></i></div>
-      <div class="c"><i class="el-icon-info"></i></div>
+      <div class="f5" @click="open3"><i class="el-icon-refresh"></i></div>
+      <div class="quit"><el-button type="text" @click="open1"><i class="el-icon-close"></i></el-button></div>
+      <div class="c"><el-button type="text" @click="open2"><i class="el-icon-info"></i></el-button></div>
     </div>
 
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    open1() {
+      this.$confirm('退出系统?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$router.push({path: 'login'})
+        this.$message({
+          message: '退出登录',
+
+        });
+
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消退出'
+        });
+      });
+
+    },
+    open2() {
+      this.$alert('<strong>版本号 : V0.0.0.0</br>杭州XXXXX有限公司版权所有</strong>', '提示', {
+        dangerouslyUseHTMLString: true
+      });
+    },
+    open3() {
+      this.$router.go(0)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -58,12 +85,12 @@ export default {}
     border-right: 1px solid #fff;
 
 
+    a {
+      text-decoration: none;
+      color: #fff;
 
-      a {
-        text-decoration: none;
-        color: #fff;
-        h1 {
-          font-size: 25px;
+      h1 {
+        font-size: 25px;
       }
     }
 
@@ -86,20 +113,25 @@ export default {}
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    .el-button{
+      color: #F5F5F5;
 
+    }
     i {
 
       transform: scale(2);
     }
 
     .f5 {
+      cursor: pointer;
+      font-size: 14px;
     }
 
     .quit {
+
     }
 
-    .c {
-    }
+
   }
 }
 </style>
