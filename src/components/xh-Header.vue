@@ -1,12 +1,12 @@
 <template>
   <div class="header">
     <div class="log">
-      <img alt="" src="@/assets/vue.png">
+      <img alt="" src="@/assets/xhlogo.png">
     </div>
     <div class="header-left">
       <h1>智能库房资产管理系统</h1>
       <div class="user">
-        <img src="@/assets/vue.png" alt="">
+        <img src="@/assets/no_user.png" alt="">
         <p>管理员(admin)</p>
       </div>
     </div>
@@ -21,7 +21,8 @@
 </template>
 
 <script>
-export default {
+
+    export default {
   methods: {
     open1() {
       this.$confirm('退出系统?', '提示', {
@@ -32,6 +33,8 @@ export default {
         this.$router.push({path: 'login'})
         this.$message({
           message: '退出登录',
+            // Cookie:remove('toKen')
+
 
         });
 
@@ -100,10 +103,10 @@ export default {
       margin-right: 20px;
 
       img {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         margin-right: 20px;
-
+        border-radius: 50%;
       }
     }
   }

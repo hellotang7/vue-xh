@@ -69,15 +69,15 @@ export default {
       this.loginForm.password = localStorage.getItem("password");
       this.checked = true;
     }
-    window.addEventListener("keydown",this.keyDown)
+    // window.addEventListener("keydown",this.keyDown)
   },
   methods: {
 
-    keyDown(e){
-      if(e.keyCode === 13){
-        this.submitForm()
-      }
-    },
+    // keyDown(e){
+    //   if(e.keyCode === 13){
+    //     this.submitForm()
+    //   }
+    // },
 
 
     submitForm() {

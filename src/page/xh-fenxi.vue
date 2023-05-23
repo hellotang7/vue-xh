@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="ym">
     <h1>分析统计页面</h1>
   </div>
 </template>
